@@ -1,0 +1,43 @@
+{
+    "name": "syrian-open-source/relational-metrics",
+    "description": "This package will help you to get your model metrics, and their related models' metrics which will help you to avoid writing to many requests or queries.",
+    "license": "MIT",
+    "keywords": [
+        "laravel",
+        "syrian open source",
+        "metrics",
+        "relations",
+        "relational"
+    ],
+    "authors": [
+        {
+            "name": "Zain Aldeen Fayod",
+            "email": "zainaldeenfayod@gmail.com",
+            "homepage": "https://github.com/zainaldeen",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "^9.5",
+        "friendsofphp/php-cs-fixer": "^3.0"
+    },
+    "require-dev": {
+        "ext-curl": "*",
+        "ext-dom": "*",
+        "ext-json": "*"
+    },
+    "minimum-stability": "dev",
+    "autoload" : {
+        "psr-4": {
+            "SOS\\RelationalMetrics\\" : "src",
+            "SOS\\RelationalMetrics\\Tests\\": "src/tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "phpunit --coverage-html coverage",
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
+    },
+    "prefer-stable": true
+
+}
