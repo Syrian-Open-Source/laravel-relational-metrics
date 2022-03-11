@@ -21,8 +21,8 @@ class RelationalMetrics extends RelationalRelationAbstract implements Relational
      */
     public function __construct(string $target)
     {
-        if (class_exists($target)) {
-            $this->model = app("App\\Models" . $target);
+        if (class_exists('App\\Models\\'.$target)) {
+            $this->model = "App\\Models\\" . $target;
         } else {
             return "Target Model ". $target. " Is Not Found!";
         }
