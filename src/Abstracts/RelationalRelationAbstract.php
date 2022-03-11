@@ -43,7 +43,7 @@ abstract class RelationalRelationAbstract
                     $condition["value"] ?? ''
                 );
         }
-        $model_value = $this->model::get();
+        $model_value = $model_value->get();
 
         return count($model_value);
     }
