@@ -1,5 +1,5 @@
 {
-    "name": "syrian-open-source/relational-metrics",
+    "name": "syrian-open-source/laravel-relational-metrics",
     "description": "This package will help you to get your model metrics, and their related models' metrics which will help you to avoid writing to many requests or queries.",
     "license": "MIT",
     "keywords": [

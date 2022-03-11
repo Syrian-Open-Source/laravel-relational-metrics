@@ -14,16 +14,16 @@ It would be a very easy to get the number of your stores which has products has 
 The first step is using composer to install the package and automatically update your composer.json file, you can do this by running:
 
 ```shell
-composer require syrian-open-source/relational-metrics
+composer require syrian-open-source/laravel-relational-metrics
 ```
 
 
 Usage
 ---------
-The Basic Usage of this package is the same of geting count of some model instances, but with a styled response 
+The Basic Usage of this package is the same of getting count of some model instances, but with a styled response 
 
 ```php
-        $instance = (new RelationalMetrics(ModelName)); 
+        $instance = (new \SOS\RelationalMetrics\Classes\RelationalMetrics(ModelName)); 
         // EX: new RelationalMetrics(Store);
         $metrics = $instance->getBasicMetrics();
         /*
@@ -40,7 +40,7 @@ What you can do next, you could get the metrics of a model depending on one of i
 Let's assume we want to get the number of stores that has products with price more than 500
 
 ```php
-        $instance = (new RelationalMetrics(ModelName)); 
+        $instance = (new \SOS\RelationalMetrics\Classes\RelationalMetrics(ModelName)); 
         // EX: new RelationalMetrics(Store);
         $metrics = $instance->getRelationalMetrics($relationName, $relationColumn, $value);
         // EX: $instance->getRelationalMetrics('products, 'price', 500);
@@ -60,7 +60,7 @@ And last but not least, You could get the metrics about a model depending on any
 
 
 ```php
-        $instance = (new RelationalMetrics(ModelName)); 
+        $instance = (new \SOS\RelationalMetrics\Classes\RelationalMetrics(ModelName)); 
         // EX: new RelationalMetrics(Store);
         $metrics = $instance->getRelationalMetrics($conditions);
         // EX: $instance->getRelationalMetrics(
