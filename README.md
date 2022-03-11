@@ -97,3 +97,6 @@ Credits
 * [Zain Aldeen Fayod](https://www.linkedin.com/in/zainaldeenfayod/)
 * [All contributors](https://github.com/syrian-open-source/laravel-relational-metrics/graphs/contributors)
 
+Package Logo by 
+-------
+* [Abdussalam Al-Ali](https://github.com/abdussalam-alali)
