@@ -23,8 +23,8 @@ Usage
 The Basic Usage of this package is the same of getting count of some model instances, but with a styled response 
 
 ```php
-        $instance = (new \SOS\RelationalMetrics\Classes\RelationalMetrics(ModelName)); 
-        // EX: new RelationalMetrics(Store);
+        $instance = (new \SOS\RelationalMetrics\Classes\RelationalMetrics("ModelName")); 
+        // EX: new RelationalMetrics("Store");
         $metrics = $instance->getBasicMetrics();
         /*
 	  *     Response will be like:
@@ -40,8 +40,8 @@ What you can do next, you could get the metrics of a model depending on one of i
 Let's assume we want to get the number of stores that has products with price more than 500
 
 ```php
-        $instance = (new \SOS\RelationalMetrics\Classes\RelationalMetrics(ModelName)); 
-        // EX: new RelationalMetrics(Store);
+        $instance = (new \SOS\RelationalMetrics\Classes\RelationalMetrics("ModelName")); 
+        // EX: new RelationalMetrics("Store");
         $metrics = $instance->getRelationalMetrics($relationName, $relationColumn, $value);
         // EX: $instance->getRelationalMetrics('products, 'price', 500);
         /*
@@ -60,8 +60,8 @@ And last but not least, You could get the metrics about a model depending on any
 
 
 ```php
-        $instance = (new \SOS\RelationalMetrics\Classes\RelationalMetrics(ModelName)); 
-        // EX: new RelationalMetrics(Store);
+        $instance = (new \SOS\RelationalMetrics\Classes\RelationalMetrics("ModelName")); 
+        // EX: new RelationalMetrics("Store");
         $metrics = $instance->getRelationalMetrics($conditions);
         // EX: $instance->getRelationalMetrics(
         	[
@@ -88,11 +88,11 @@ Please see the [CHANGELOG](https://github.com/syrian-open-source/laravel-relatio
 
 Security
 --------
-If you discover any security related issues, please email them first to "zainaldeenfayod@gmail.com", 
+If you discover any security related issues, please email them first to zainaldeenfayod@gmail.com, 
 if we do not fix it within a short period of time please open a new issue describing your problem. 
 
 Credits
 -------
-* [zainaldeenfayod@gmail.com](https://github.com/zainaldeen/laravel-relational-metrics-1)
+* [Zain Aldeen Fayod](https://www.linkedin.com/in/zainaldeenfayod/)
 * [All contributors](https://github.com/syrian-open-source/laravel-relational-metrics/graphs/contributors)
 
