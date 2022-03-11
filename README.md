@@ -24,7 +24,7 @@ The Basic Usage of this package is the same of getting count of some model insta
 
 ```php
         $instance = (new \SOS\RelationalMetrics\Classes\RelationalMetrics("ModelName")); 
-        // EX: new RelationalMetrics("Store");
+        // example: (new \SOS\RelationalMetrics\Classes\RelationalMetrics("Store"));
         $metrics = $instance->getBasicMetrics();
         /*
 	  *     Response will be like:
@@ -41,9 +41,9 @@ Let's assume we want to get the number of stores that has products with price mo
 
 ```php
         $instance = (new \SOS\RelationalMetrics\Classes\RelationalMetrics("ModelName")); 
-        // EX: new RelationalMetrics("Store");
+        // example: (new \SOS\RelationalMetrics\Classes\RelationalMetrics("Store"));
         $metrics = $instance->getRelationalMetrics($relationName, $relationColumn, $value);
-        // EX: $instance->getRelationalMetrics('products, 'price', 500);
+        // example: $instance->getRelationalMetrics('products, 'price', 500);
         /*
 	  *     Response will be like:
 	  *	[
@@ -61,14 +61,15 @@ And last but not least, You could get the metrics about a model depending on any
 
 ```php
         $instance = (new \SOS\RelationalMetrics\Classes\RelationalMetrics("ModelName")); 
-        // EX: new RelationalMetrics("Store");
+        // example: (new \SOS\RelationalMetrics\Classes\RelationalMetrics("Store"));
+        
+        // example for the conditions
+        $conditions = [
+                  ['method' => 'where', 'column' => 'address', 'operator' => 'like', 'value' => '%UAE%'],
+                  ['method' => 'where', 'column' => 'rate', 'operator' => '>', 'value' => 3],
+        ];
         $metrics = $instance->getRelationalMetrics($conditions);
-        // EX: $instance->getRelationalMetrics(
-        	[
-        		['method' => 'where', 'column' => 'address', 'operator' => 'like', 'value' => '%UAE%'],
-        		['method' => 'where', 'column' => 'rate', 'operator' => '>', 'value' => 3],
-        	]
-        );
+        	
         /*
 	  *     Response will be like:
 	  *	[
