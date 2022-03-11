@@ -1,12 +1,9 @@
 ![logo](assets/logo.png)
 
-#Add your package badges
 
-[![PHP Composer](https://github.com/Syrian-Open-Source/laravel-package-template/actions/workflows/php.yml/badge.svg)](https://github.com/syrian-open-source/laravel-multi-process/actions/workflows/php.yml)
-[![Run tests](https://github.com/Syrian-Open-Source/laravel-package-template/actions/workflows/tests.yml/badge.svg)](https://github.com/syrian-open-source/laravel-multi-process/actions/workflows/tests.yml)
+[![PHP Composer](https://github.com/Syrian-Open-Source/laravel-relational-metrics/actions/workflows/php.yml/badge.svg)](https://github.com/syrian-open-source/laravel-multi-process/actions/workflows/php.yml)
+[![Run tests](https://github.com/Syrian-Open-Source/laravel-relational-metrics/actions/workflows/tests.yml/badge.svg)](https://github.com/syrian-open-source/laravel-multi-process/actions/workflows/tests.yml)
 
-Design a simple and expressive logo with the same model you see above,
-the logo design helps to unify the visual identity and further develop the optimal packages to increase the quality of the software we develop
 
 # Relational Metrics
 This package will help you to make your metrics easier, You could get metrics about your Models, Models depending on their relations, or even metrics about your models depending on multiple conditions!!
@@ -17,16 +14,16 @@ It would be a very easy to get the number of your stores which has products has 
 The first step is using composer to install the package and automatically update your composer.json file, you can do this by running:
 
 ```shell
-composer require syrian-open-source/relational-metrics
+composer require syrian-open-source/laravel-relational-metrics
 ```
 
 
 Usage
 ---------
-The Basic Usage of this package is the same of geting count of some model instances, but with a styled response 
+The Basic Usage of this package is the same of getting count of some model instances, but with a styled response 
 
 ```php
-        $instance = (new RelationalMetrics(ModelName)); 
+        $instance = (new \SOS\RelationalMetrics\Classes\RelationalMetrics(ModelName)); 
         // EX: new RelationalMetrics(Store);
         $metrics = $instance->getBasicMetrics();
         /*
@@ -43,7 +40,7 @@ What you can do next, you could get the metrics of a model depending on one of i
 Let's assume we want to get the number of stores that has products with price more than 500
 
 ```php
-        $instance = (new RelationalMetrics(ModelName)); 
+        $instance = (new \SOS\RelationalMetrics\Classes\RelationalMetrics(ModelName)); 
         // EX: new RelationalMetrics(Store);
         $metrics = $instance->getRelationalMetrics($relationName, $relationColumn, $value);
         // EX: $instance->getRelationalMetrics('products, 'price', 500);
@@ -63,7 +60,7 @@ And last but not least, You could get the metrics about a model depending on any
 
 
 ```php
-        $instance = (new RelationalMetrics(ModelName)); 
+        $instance = (new \SOS\RelationalMetrics\Classes\RelationalMetrics(ModelName)); 
         // EX: new RelationalMetrics(Store);
         $metrics = $instance->getRelationalMetrics($conditions);
         // EX: $instance->getRelationalMetrics(
@@ -87,15 +84,15 @@ At the previous Example the Package will return the number of the stores where t
 
 Changelog
 ---------
-Please see the [CHANGELOG](https://github.com/syrian-open-source/laravel-package-template/blob/master/CHANGELOG.md) for more information about what has changed or updated or added recently.
+Please see the [CHANGELOG](https://github.com/syrian-open-source/laravel-relational-metrics/blob/master/CHANGELOG.md) for more information about what has changed or updated or added recently.
 
 Security
 --------
-If you discover any security related issues, please email them first to "your email", 
+If you discover any security related issues, please email them first to "zainaldeenfayod@gmail.com", 
 if we do not fix it within a short period of time please open a new issue describing your problem. 
 
 Credits
 -------
 * [zainaldeenfayod@gmail.com](https://github.com/zainaldeen/laravel-relational-metrics-1)
-* [All contributors](https://github.com/syrian-open-source/laravel-package-template/graphs/contributors)
+* [All contributors](https://github.com/syrian-open-source/laravel-relational-metrics/graphs/contributors)
 
