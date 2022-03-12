@@ -2,9 +2,79 @@
 
 namespace SOS\RelationalMetrics\Abstracts;
 
+/**
+ * Class RelationalRelationAbstract
+ *
+ * @author karam mustafa
+ * @package SOS\RelationalMetrics\Abstracts
+ */
 abstract class RelationalRelationAbstract
 {
+    /**
+     * model to handle
+     * @author karam mustafa
+     * @var string
+     */
     protected $model = '';
+
+    /**
+     * count of rows
+     * @author karam mustafa
+     * @var string
+     */
+    private $count = '';
+
+    /**
+     * message for a count
+     * @author karam mustafa
+     * @var string
+     */
+    private $name = '';
+
+    /**
+     * @return string
+     * @author karam mustafa
+     */
+    public function getCount()
+    {
+        return $this->count;
+    }
+
+    /**
+     * @param  string  $count
+     *
+     * @return RelationalRelationAbstract
+     * @author karam mustafa
+     */
+    public function setCount($count)
+    {
+        $this->count = $count;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     * @author karam mustafa
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param  string  $name
+     *
+     * @return RelationalRelationAbstract
+     * @author karam mustafa
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
 
     /**
      *  return count for the model's relation depending on the relation type (where, when ... etc), column and value
@@ -59,6 +129,14 @@ abstract class RelationalRelationAbstract
         return $this->model::query()->get()->count();
     }
 
+    /**
+     * append final values to their properties
+     *
+     * @param $model_count
+     *
+     * @return array
+     * @author karam mustafa
+     */
     protected function returnFinalResponse($model_count): array
     {
         return  [
@@ -67,6 +145,12 @@ abstract class RelationalRelationAbstract
         ];
     }
 
+    /**
+     * description
+     *
+     * @return string
+     * @author karam mustafa
+     */
     protected function getResponseName()
     {
         $path = explode('\\', $this->model);
