@@ -75,7 +75,6 @@ abstract class RelationalRelationAbstract
         return $this;
     }
 
-
     /**
      *  return count for the model's relation depending on the relation type (where, when ... etc), column and value
      *
