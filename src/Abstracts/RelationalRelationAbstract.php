@@ -62,6 +62,10 @@ abstract class RelationalRelationAbstract
      */
     public function getName()
     {
+        if (is_null($this->name)){
+            $this->name = $this->getResponseName();
+        }
+
         return $this->name;
     }
 
