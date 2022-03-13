@@ -14,7 +14,6 @@ use SOS\RelationalMetrics\Interfaces\RelationalInterface;
  */
 class RelationalMetrics extends RelationalRelationAbstract implements RelationalInterface
 {
-
     /**
      * class constructor
      *
@@ -57,7 +56,6 @@ class RelationalMetrics extends RelationalRelationAbstract implements Relational
         return $this->returnFinalResponse(
             $this->returnRelationalCount($relation, $column, $value)
         );
-
     }
 
     /**
@@ -90,12 +88,10 @@ class RelationalMetrics extends RelationalRelationAbstract implements Relational
             ? $class
             : "\\App\\Models\\$class";
 
-        if (!class_exists($fixedClassName) && $fixedClassName instanceof Model) {
+        if (! class_exists($fixedClassName) && $fixedClassName instanceof Model) {
             throw new \Exception("model $class not found !!");
         }
 
         return $fixedClassName;
     }
-
-
 }

@@ -37,9 +37,10 @@ abstract class RelationalRelationAbstract
      */
     public function getCount()
     {
-        if (is_null($this->count)){
+        if (is_null($this->count)) {
             $this->getCountDirectly();
         }
+
         return $this->count;
     }
 
@@ -62,7 +63,7 @@ abstract class RelationalRelationAbstract
      */
     public function getName()
     {
-        if (is_null($this->name)){
+        if (is_null($this->name)) {
             $this->name = $this->getResponseName();
         }
 
