@@ -2,6 +2,7 @@
 
 namespace SOS\RelationalMetrics\Classes;
 
+use Illuminate\Database\Eloquent\Model;
 use SOS\RelationalMetrics\Abstracts\RelationalRelationAbstract;
 use SOS\RelationalMetrics\Interfaces\RelationalInterface;
 
@@ -13,61 +14,88 @@ use SOS\RelationalMetrics\Interfaces\RelationalInterface;
  */
 class RelationalMetrics extends RelationalRelationAbstract implements RelationalInterface
 {
+
     /**
-     * description
+     * class constructor
      *
+     * @throws \Exception
      * @author zainaldeen
      * @var string
      */
-    public function __construct(string $target)
+    public function __construct(string $class)
     {
-        if (class_exists('App\\Models\\'.$target)) {
-            $this->model = "App\\Models\\" . $target;
-        } else {
-            return "Target Model ". $target. " Is Not Found!";
-        }
+        $className = $this->validateClass($class);
+
+        $this->model = $className;
     }
 
     /**
      * return simple count for the model
      *
-     * @author zainaldeen
      * @return  array
+     * @author zainaldeen
      */
     public function getBasicMetrics()
     {
-        $model_count = $this->getCountDirectly();
-
-        return $this->returnFinalResponse($model_count);
+        return $this->returnFinalResponse(
+            $this->getCountDirectly()
+        );
     }
 
     /**
      * return count for the model's relation depending on the relation type (where, when ... etc), column and value
      *
-     * @author zainaldeen
-     * @param string $relation
-     * @param string $column
-     * @param mixed $value
+     * @param  string  $relation
+     * @param  string  $column
+     * @param  mixed  $value
+     *
      * @return  array
+     * @author zainaldeen
      */
     public function getRelationalMetrics($relation, $column, $value)
     {
-        $model_count = $this->returnRelationalCount($relation, $column, $value);
+        return $this->returnFinalResponse(
+            $this->returnRelationalCount($relation, $column, $value)
+        );
 
-        return $this->returnFinalResponse($model_count);
     }
 
     /**
      * return count for the model depending on the passing conditions
      *
-     * @author zainaldeen
-     * @param array $conditions
+     * @param  array  $conditions
+     *
      * @return  array
+     * @author zainaldeen
      */
     public function getConditionalMetrics($conditions)
     {
-        $model_count = $this->getCountWithConditions($conditions);
-
-        return $this->returnFinalResponse($model_count);
+        return $this->returnFinalResponse(
+            $this->getCountWithConditions($conditions)
+        );
     }
+
+    /**
+     * check if user insert a correct class name, otherwise we will ty to resolve the model class name
+     *
+     * @param  string  $class
+     *
+     * @return \SOS\RelationalMetrics\Classes\string|string
+     * @throws \Exception
+     * @author karam mustafa
+     */
+    private function validateClass(string $class)
+    {
+        $fixedClassName = str_contains("App\\Models", $class)
+            ? $class
+            : "\\App\\Models\\$class";
+
+        if (!class_exists($fixedClassName) && $fixedClassName instanceof Model) {
+            throw new \Exception("model $class not found !!");
+        }
+
+        return $fixedClassName;
+    }
+
+
 }

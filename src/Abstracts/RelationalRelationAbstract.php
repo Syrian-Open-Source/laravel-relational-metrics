@@ -22,7 +22,7 @@ abstract class RelationalRelationAbstract
      * @author karam mustafa
      * @var string
      */
-    private $count = '';
+    private $count = null;
 
     /**
      * message for a count
@@ -37,6 +37,9 @@ abstract class RelationalRelationAbstract
      */
     public function getCount()
     {
+        if (is_null($this->count)){
+            $this->getCountDirectly();
+        }
         return $this->count;
     }
 
@@ -126,7 +129,9 @@ abstract class RelationalRelationAbstract
      */
     protected function getCountDirectly()
     {
-        return $this->model::query()->get()->count();
+        $this->count = $this->model::query()->get()->count();
+
+        return $this->count;
     }
 
     /**
