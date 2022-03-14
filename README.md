@@ -25,7 +25,12 @@ The Basic Usage of this package is the same of getting count of some model insta
 ```php
         $instance = (new \SOS\RelationalMetrics\Classes\RelationalMetrics("ModelName")); 
         // example: (new \SOS\RelationalMetrics\Classes\RelationalMetrics("Store"));
+        // or you can specify thr model name by this way:  new RelationalMetrics(Store::class);
         $metrics = $instance->getBasicMetrics();
+        // or you can get the count or the message directly.
+        $directCount = $instance->getCount(); 
+        $directName = $instance->getName(); 
+
         /*
 	  *     Response will be like:
 	  *	[
@@ -42,6 +47,7 @@ Let's assume we want to get the number of stores that has products with price mo
 ```php
         $instance = (new \SOS\RelationalMetrics\Classes\RelationalMetrics("ModelName")); 
         // example: (new \SOS\RelationalMetrics\Classes\RelationalMetrics("Store"));
+        // or you can specify thr model name by this way:  new RelationalMetrics(Store::class);
         $metrics = $instance->getRelationalMetrics($relationName, $relationColumn, $value);
         // example: $instance->getRelationalMetrics('products, 'price', 500);
         /*
@@ -62,7 +68,7 @@ And last but not least, You could get the metrics about a model depending on any
 ```php
         $instance = (new \SOS\RelationalMetrics\Classes\RelationalMetrics("ModelName")); 
         // example: (new \SOS\RelationalMetrics\Classes\RelationalMetrics("Store"));
-        
+        // or you can specify thr model name by this way:  new RelationalMetrics(Store::class);
         // example for the conditions
         $conditions = [
                   ['method' => 'where', 'column' => 'address', 'operator' => 'like', 'value' => '%UAE%'],
