@@ -8,9 +8,9 @@ use SOS\RelationalMetrics\Classes\RelationalMetrics;
 class RelationalMetricsServiceProviders extends ServiceProvider
 {
     /**
+     * register package dependencies.
      *
-     *
-     * @author your name
+     * @author karam mustafa
      */
     public function boot()
     {
@@ -22,7 +22,7 @@ class RelationalMetricsServiceProviders extends ServiceProvider
     /**
      *
      *
-     * @author your name
+     * @author karam mustafa
      */
     public function register()
     {
@@ -39,9 +39,9 @@ class RelationalMetricsServiceProviders extends ServiceProvider
     }
 
     /**
-     * publish files
+     * publish files if exists.
      *
-     * @author your name
+     * @author karam mustafa
      */
     protected function publishesPackages()
     {
@@ -49,9 +49,9 @@ class RelationalMetricsServiceProviders extends ServiceProvider
     }
 
     /**
+     * init command if exists.
      *
-     *
-     * @author your name
+     * @author karam mustafa
      */
     private function resolveCommands()
     {
