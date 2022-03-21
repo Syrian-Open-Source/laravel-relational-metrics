@@ -45,9 +45,7 @@ class RelationalMetricsServiceProviders extends ServiceProvider
      */
     protected function publishesPackages()
     {
-        $this->publishes([
-            __DIR__.'/../Config/package_config.php' => config_path('package_config.php'),
-        ], 'config-command');
+
     }
 
     /**
@@ -57,10 +55,6 @@ class RelationalMetricsServiceProviders extends ServiceProvider
      */
     private function resolveCommands()
     {
-        if ($this->app->runningInConsole()) {
-            $this->commands([
-                InstallCommand::class,
-            ]);
-        }
+
     }
 }
