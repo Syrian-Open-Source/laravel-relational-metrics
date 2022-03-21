@@ -3,7 +3,7 @@
 namespace SOS\RelationalMetrics\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use SOS\LaravelPackageTemplate\Classes\ClassToBuild;
+use SOS\RelationalMetrics\Classes\RelationalMetrics;
 
 /**
  * @method RelationalMetrics setExample(string $param)
