@@ -21,11 +21,28 @@ class RelationalMetrics extends RelationalRelationAbstract implements Relational
      * @author zainaldeen
      * @var string
      */
-    public function __construct(string $class)
+    public function __construct(string $model = null)
+    {
+        if (isset($model)) {
+            $this->setModel($model);
+        }
+    }
+
+    /**
+     * set class instance.
+     *
+     * @return \SOS\RelationalMetrics\Classes\RelationalMetrics
+     * @throws \Exception
+     * @author zainaldeen, karam mustafa
+     * @var string
+     */
+    public function setModel(string $class)
     {
         $className = $this->validateClass($class);
 
         $this->model = $className;
+
+        return $this;
     }
 
     /**
@@ -36,9 +53,8 @@ class RelationalMetrics extends RelationalRelationAbstract implements Relational
      */
     public function getBasicMetrics()
     {
-        return $this->returnFinalResponse(
-            $this->getCountDirectly()
-        );
+
+        return $this->getCountDirectly()->returnFinalResponse();
     }
 
     /**
@@ -53,9 +69,8 @@ class RelationalMetrics extends RelationalRelationAbstract implements Relational
      */
     public function getRelationalMetrics($relation, $column, $value)
     {
-        return $this->returnFinalResponse(
-            $this->returnRelationalCount($relation, $column, $value)
-        );
+
+        return $this->returnRelationalCount($relation, $column, $value)->returnFinalResponse();
     }
 
     /**
@@ -68,9 +83,8 @@ class RelationalMetrics extends RelationalRelationAbstract implements Relational
      */
     public function getConditionalMetrics($conditions)
     {
-        return $this->returnFinalResponse(
-            $this->getCountWithConditions($conditions)
-        );
+
+        return $this->getCountWithConditions($conditions)->returnFinalResponse();
     }
 
     /**
@@ -84,11 +98,11 @@ class RelationalMetrics extends RelationalRelationAbstract implements Relational
      */
     private function validateClass(string $class)
     {
-        $fixedClassName = str_contains("App\\Models", $class)
+        $fixedClassName = (str_contains($class,"App\Models") || str_contains($class,"App"))
             ? $class
             : "\\App\\Models\\$class";
 
-        if (! class_exists($fixedClassName) && $fixedClassName instanceof Model) {
+        if (!class_exists($fixedClassName) && $fixedClassName instanceof Model) {
             throw new \Exception("model $class not found !!");
         }
 
