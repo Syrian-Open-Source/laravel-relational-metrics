@@ -33,8 +33,8 @@ class RelationalMetricsServiceProviders extends ServiceProvider
      */
     protected function registerFacades()
     {
-        $this->app->singleton('RelationalMetricsFacade', function ($data) {
-            return new RelationalMetrics($data);
+        $this->app->singleton('RelationalMetricsFacade', function () {
+            return new RelationalMetrics();
         });
     }
 

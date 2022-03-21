@@ -12,6 +12,6 @@ class RelationalMetricsFacade extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'RelationalMetrics';
+        return 'RelationalMetricsFacade';
     }
 }
