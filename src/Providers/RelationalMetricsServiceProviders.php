@@ -45,7 +45,6 @@ class RelationalMetricsServiceProviders extends ServiceProvider
      */
     protected function publishesPackages()
     {
-
     }
 
     /**
@@ -55,6 +54,5 @@ class RelationalMetricsServiceProviders extends ServiceProvider
      */
     private function resolveCommands()
     {
-
     }
 }
