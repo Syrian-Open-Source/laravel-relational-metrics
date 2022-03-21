@@ -86,71 +86,77 @@ abstract class RelationalRelationAbstract
     /**
      *  return count for the model's relation depending on the relation type (where, when ... etc), column and value
      *
-     * @param string $relation
-     * @param string $column
-     * @param mixed $value
-     * @return int
+     * @param  string  $relation
+     * @param  string  $column
+     * @param  mixed  $value
+     *
+     * @return \SOS\RelationalMetrics\Abstracts\RelationalRelationAbstract
      * @author zainaldeen
      */
-    protected function returnRelationalCount(string $relation, string $column, $value): int
-    {
-        $model_value = $this->model::query()
+    protected function returnRelationalCount(
+        string $relation,
+        string $column,
+        $value
+    ): RelationalRelationAbstract {
+        $result = $this->model::query()
             ->whereHas($relation, function ($q) use ($column, $value) {
                 return $q->latest()->where($column, $value);
             })->get();
 
-        return $model_value->count();
+        $this->setCount($result->count());
+
+        return $this;
     }
 
     /**
      * return count for the model depending on the passing conditions
      *
-     * @param array $conditions
-     * @return int
+     * @param  array  $conditions
+     *
+     * @return RelationalRelationAbstract
      * @author zainaldeen
      */
-    protected function getCountWithConditions(array $conditions): int
+    protected function getCountWithConditions(array $conditions): RelationalRelationAbstract
     {
-        $model_value = $this->model::query();
+        $result = $this->model::query();
         foreach ($conditions as $condition) {
-            $model_value = $model_value
+            $result = $result
                 ->{$condition["method"]}(
                     ($condition["column"]),
                     $condition['operator'] ?? '',
                     $condition["value"] ?? ''
                 );
         }
-        $model_value = $model_value->get();
 
-        return count($model_value);
+        $this->setCount(count($result->get()));
+
+        return $this;
     }
 
     /**
      * return simple count for the model
      *
-     * @return int
+     * @return RelationalRelationAbstract
      * @author zainaldeen
      */
     protected function getCountDirectly()
     {
         $this->count = $this->model::query()->get()->count();
 
-        return $this->count;
+        return $this;
     }
 
     /**
      * append final values to their properties
      *
-     * @param $model_count
-     *
      * @return array
      * @author karam mustafa
      */
-    protected function returnFinalResponse($model_count): array
+    protected function returnFinalResponse(): array
     {
-        return  [
+        return [
             'name' => $this->getResponseName(),
-            'count' => $model_count,
+            'count' => $this->getCount(),
         ];
     }
 
