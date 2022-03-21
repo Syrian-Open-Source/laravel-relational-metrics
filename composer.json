@@ -33,6 +33,13 @@
             "SOS\\RelationalMetrics\\Tests\\": "src/tests"
         }
     },
+    "extra" : {
+        "laravel" : {
+            "providers" : [
+                "SOS\\RelationalMetrics\\Providers\\RelationalMetricsServiceProviders"
+            ]
+        }
+    },
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-coverage": "phpunit --coverage-html coverage",
