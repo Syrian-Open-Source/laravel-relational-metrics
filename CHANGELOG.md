@@ -1,3 +1,7 @@
+## v1.2.0 - 2022-03-21
+
+- Refactor to use facade class instead of concrete class
+
 ## v.1.1.0 - 2022-03-15
 
 - Add new feature to get count and name from getters  #10.
