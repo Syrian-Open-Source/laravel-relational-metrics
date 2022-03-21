@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Facade;
 use SOS\LaravelPackageTemplate\Classes\ClassToBuild;
 
 /**
- * @method ClassToBuild setExample(string $param)
+ * @method RelationalMetrics setExample(string $param)
  */
 class RelationalMetricsFacade extends Facade
 {
